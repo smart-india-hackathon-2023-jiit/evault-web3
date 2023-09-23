@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import law from "../images/law.jpg";
 
 const Navbar = ({onConnect}) => {
   return (
@@ -9,7 +10,7 @@ const Navbar = ({onConnect}) => {
           <div className="flex items-center">
             <Link to="/">
               <img
-                src="../../law.jpg"
+                src={law}
                 alt="Your Logo"
                 className="h-12 w-12" 
               />

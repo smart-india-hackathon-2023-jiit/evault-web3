@@ -1,5 +1,5 @@
 import React from 'react';
-import backgroundImage from '../../public/logins.jpg';
+import backgroundImage from '../images/logins.jpg';
 
 const Login = ({onConnect}) => {
   const divStyle = {

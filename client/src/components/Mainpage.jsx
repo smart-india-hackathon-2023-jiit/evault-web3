@@ -3,6 +3,7 @@ import React from 'react';
 import Services from './Services';
 import About from './About';
 import Contact from './Contact';
+import backgroundImage from '../images/background.jpg';
 
 const Mainpage = ({onConnect, isUserLogged, correctNetwork}) => {
   return (
@@ -10,7 +11,7 @@ const Mainpage = ({onConnect, isUserLogged, correctNetwork}) => {
       <div
         className="relative"
         style={{
-          backgroundImage: `url($../../public/background.jpg)`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

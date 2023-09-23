@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import files from "../images/files.jpg";
+import lawyer from "../images/lawyer.jpg";
 
 const Services = ({isUserLogged, correctNetwork}) => {
   return (
@@ -16,7 +18,7 @@ const Services = ({isUserLogged, correctNetwork}) => {
             <div className="bg-[#279EFF] text-white rounded-lg p-4 max-w-lg mx-auto transition-transform transform hover:scale-105 mr-2">
               <div className="h-[200px] w-[400px] mb-4 overflow-hidden">
                 <img
-                  src="../../public/files.jpg"
+                  src={files}
                   alt="Service 1"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -31,7 +33,7 @@ const Services = ({isUserLogged, correctNetwork}) => {
           <div className="bg-[#176B87] text-white rounded-lg p-4 max-w-lg mx-auto transition-transform transform hover:scale-105 ml-2">
             <div className="h-[200px] w-[400px] mb-4 overflow-hidden">
               <img
-                src="../../public/lawyer.jpg"
+                src={lawyer}
                 alt="Service 2"
                 className="w-full h-full object-cover rounded-lg"
               />

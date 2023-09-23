@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import backgroundImageUrl from '../images/contact.jpg';
 
 const Contact = () => {
-  const backgroundImageUrl = 'url(../../public/contact.jpg)';
 
   const containerStyle = {
-    backgroundImage: backgroundImageUrl,
+    backgroundImage: `url(${backgroundImageUrl})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',
