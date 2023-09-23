@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {ipfs} from './ipfs';
 
 
 function JudgmentForm() {
@@ -7,11 +8,29 @@ function JudgmentForm() {
       dateOfJudgment: '',
       category: '',
       judgeName: '',
+      pdf: '',
     };
   
     const [formData, setFormData] = useState(initialFormData);
 
     const handlepdf = (e) => {
+      e.preventDefault();
+      const file = e.target.files[0];
+      const reader = new window.FileReader();
+      reader.onloadend =async () => {
+        try {
+          const fileBuffer = new Blob([reader.result]);
+          const uploadedFile = await ipfs.add(fileBuffer);
+    
+
+          const ipfsCid = uploadedFile.path;
+          console.log('File uploaded to IPFS with CID:', ipfsCid);
+        } catch (error) {
+          console.error('Error uploading file to IPFS:', error);
+        }
+      };
+  
+      reader.readAsArrayBuffer(file);
     }
   
 
