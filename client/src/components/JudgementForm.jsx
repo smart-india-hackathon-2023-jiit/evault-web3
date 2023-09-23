@@ -7,27 +7,20 @@ function JudgmentForm() {
       dateOfJudgment: '',
       category: '',
       judgeName: '',
-      pdfFile:null,
     };
   
     const [formData, setFormData] = useState(initialFormData);
+
+    const handlepdf = (e) => {
+    }
   
 
     const handleChange = (e) => {
-        const { name, value, type, files } = e.target;
-    
-        // Check if the input is a file input
-        if (type === 'file') {
-          setFormData({
-            ...formData,
-            [name]: files[0], // Store the file object in the state
-          });
-        } else {
+        const { name, value, type} = e.target;
           setFormData({
             ...formData,
             [name]: value,
           });
-        }
     };
 
   const handleSubmit = (e) => {
@@ -61,7 +54,7 @@ function JudgmentForm() {
             name="dateOfJudgment"
             value={formData.dateOfJudgment}
             onChange={handleChange}
-            className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md'
+            className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md text-black'
             placeholder='Enter date'
           />
         </div>
@@ -71,7 +64,7 @@ function JudgmentForm() {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md '
+            className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md text-black'
             placeholder='Select category'
           >
             <option value="">Select category</option>
@@ -100,7 +93,7 @@ function JudgmentForm() {
               type="file"
               name="pdfFile"
               accept=".pdf" // Specify accepted file types (PDF in this case)
-              onChange={handleChange}
+              onChange={handlepdf}
               className='w-full p-[12px] gap-[12px] input-shadow rounded-md text-black'
             />
           </div>
