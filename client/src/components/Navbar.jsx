@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
-import law from "../images/law.jpg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import law from '../images/law.jpg';
 
-const Navbar = ({onConnect}) => {
+const Navbar = ({ onConnect }) => {
   return (
     <nav className="bg-white text-white p-2 z-10 fixed top-0 left-0 w-full font-display">
       <div className="container mx-auto">
@@ -9,11 +10,7 @@ const Navbar = ({onConnect}) => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/">
-              <img
-                src={law}
-                alt="Your Logo"
-                className="h-12 w-12" 
-              />
+              <img src={law} alt="Your Logo" className="h-12 w-12" />
             </Link>
           </div>
           <div className="space-x-6">
@@ -35,7 +32,10 @@ const Navbar = ({onConnect}) => {
             >
               Contact
             </a>
-            <button className="bg-[#176B87] hover:bg-white hover:text-[#176B87] border-none" onClick={onConnect}>
+            <button
+              className="bg-[#176B87] hover:bg-[#053B50] text-white font-semibold py-2 px-4 rounded-lg border-2 border-[#176B87] hover:border-[#053B50] transition-all duration-300 ease-in-out"
+              onClick={onConnect}
+            >
               Login
             </button>
           </div>
