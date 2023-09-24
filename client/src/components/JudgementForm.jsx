@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import {ipfs} from './ipfs';
+import FormData from 'form-data';
+import app from './firebase';
+import {getStorage, ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
+
+
+const storage = getStorage(app);
+
+
+
+
 
 
 function JudgmentForm() {
@@ -11,33 +20,38 @@ function JudgmentForm() {
       pdf: '',
     };
   
-    const [formData, setFormData] = useState(initialFormData);
+    const [formDatas, setFormData] = useState(initialFormData);
 
-    const handlepdf = (e) => {
+    const handlepdf =async (e) => {
       e.preventDefault();
       const file = e.target.files[0];
-      const reader = new window.FileReader();
-      reader.onloadend =async () => {
-        try {
-          const fileBuffer = new Blob([reader.result]);
-          const uploadedFile = await ipfs.add(fileBuffer);
-    
+      const storageRef = ref(storage, file.name);
 
-          const ipfsCid = uploadedFile.path;
-          console.log('File uploaded to IPFS with CID:', ipfsCid);
-        } catch (error) {
-          console.error('Error uploading file to IPFS:', error);
-        }
-      };
-  
-      reader.readAsArrayBuffer(file);
-    }
+      try {
+        // Upload the PDF file to Firebase Storage
+        await uploadBytesResumable(storageRef, file);
+
+        // Get the download URL of the uploaded file
+        const pdfUrl = await getDownloadURL(storageRef);
+        console.log('File uploaded to Firebase Storage:', pdfUrl);
+
+        setFormData({
+          ...formDatas,
+          pdf: pdfUrl,
+        });
+      } catch (error) {
+        console.error('Error uploading file to Firebase Storage:', error);
+      }
+    };
+      
+      
+    
   
 
     const handleChange = (e) => {
         const { name, value, type} = e.target;
           setFormData({
-            ...formData,
+            ...formDatas,
             [name]: value,
           });
     };
@@ -46,7 +60,7 @@ function JudgmentForm() {
     e.preventDefault();
     // You can handle form submission logic here, like sending data to a server or updating state.
     // For now, we'll just log the form data.
-    console.log(formData);
+    console.log(formDatas);
     setFormData(initialFormData);
   };
 
@@ -60,7 +74,7 @@ function JudgmentForm() {
           <input
             type="text"
             name="title"
-            value={formData.title}
+            value={formDatas.title}
             onChange={handleChange}
             className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md  text-black'
             placeholder='Enter title'
@@ -71,7 +85,7 @@ function JudgmentForm() {
           <input
             type="date"
             name="dateOfJudgment"
-            value={formData.dateOfJudgment}
+            value={formDatas.dateOfJudgment}
             onChange={handleChange}
             className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md text-black'
             placeholder='Enter date'
@@ -81,7 +95,7 @@ function JudgmentForm() {
           <label className='text-[20px] leading-[22px] font-normal flex flex-row gap-[2px] overflow-y-hidden'>Category <p className='text-[#EF476F] overflow-y-hidden'>*</p></label>
           <select
             name="category"
-            value={formData.category}
+            value={formDatas.category}
             onChange={handleChange}
             className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md text-black'
             placeholder='Select category'
@@ -98,7 +112,7 @@ function JudgmentForm() {
           <input
             type="text"
             name="judgeName"
-            value={formData.judgeName}
+            value={formDatas.judgeName}
             onChange={handleChange}
             className='w-full h-[48px] p-[12px] gap-[12px] input-shadow rounded-md  text-black'
             placeholder='Enter judge name'
