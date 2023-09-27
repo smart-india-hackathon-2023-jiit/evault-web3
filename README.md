@@ -3,11 +3,11 @@
 
 ## Overview
 
-VaultSign is a blockchain-based eVault system engineered to provide a secure, transparent, and accessible solution for the storage, management, and sharing of legal records. This README offers an in-depth look into the project, its core objectives, advanced features, installation instructions, deployment, and essential details.
+VaultSign is a blockchain-based eVault system engineered to provide a secure, transparent, and accessible solution for the storage, management, and sharing of legal records. 
 
 ### Problem Statement
 
-The primary goal of this project is to address critical challenges within the legal industry:
+The primary goal of this project is to address critical challenges within the legal industry which includes :
 
 - Insufficient transparency in legal record management.
 - Inefficient document handling and collaboration among lawyers, clients, and judges.
@@ -39,14 +39,6 @@ The primary goal of this project is to address critical challenges within the le
 
 4. **Engaging Presentation:** An insightful presentation summarizing the prototype, design document, and business strategy.
 
-### Impact
-
-The VaultSign initiative aspires to exert a substantial influence on access to justice in India by:
-
-- Streamlining legal proceedings, resulting in reduced timeframes and expenses.
-- Elevating data integrity and security standards.
-- Amplifying trust in the justice system.
-- Providing an unassailable and transparent platform for legal record storage and exchange.
 
 ## Deployment
 
@@ -56,17 +48,21 @@ To deploy VaultSign, follow these steps:
 
    ```shell
    git clone https://github.com/smart-india-hackathon-2023-jiit/evault-web3.git
-2. Go to frontend directory :
+2. Go to client directory :
     ```shell
-    cd frontend
+    cd client
 3. Install all the packages and dependencies
     ```shell
    npm install
-4. run the program
+
+4. Run the program
    ```shell
    npm run dev
-   
+### Impact
 
+The VaultSign initiative aspires to exert a substantial influence on access to justice in India by :
 
-
-    
+- Streamlining legal proceedings, resulting in reduced timeframes and expenses.
+- Elevating data integrity and security standards.
+- Amplifying trust in the justice system.
+- Providing an unassailable and transparent platform for legal record storage and exchange.
